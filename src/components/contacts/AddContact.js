@@ -42,12 +42,15 @@ class AddContact extends Component {
         dispatch({ type: 'ADD_CONTACT', payload: newContact });
 
         // Clear the state
-        this.state.setState({
+        this.setState({
             name: '',
             email: '',
             phone: '',
             errors: {}
         });
+
+        // Redirect back to home after adding
+        this.props.history.push('/');
     };
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
