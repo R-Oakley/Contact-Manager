@@ -30,10 +30,19 @@ export class Provider extends Component {
         }
     };
 
-    componentDidMount() {
-        axios
-            .get('https://jsonplaceholder.typicode.com/users')
-            .then(res => this.setState({ contacts: res.data }));
+    // componentDidMount() {
+    //     axios
+    //         .get('https://jsonplaceholder.typicode.com/users')
+    //         .then(res => this.setState({ contacts: res.data }));
+    // }
+
+    //! Example of Async await
+    async componentDidMount() {
+        const res = await axios.get(
+            'https://jsonplaceholder.typicode.com/users'
+        );
+
+        this.setState({ contacts: res.data });
     }
 
     render() {
